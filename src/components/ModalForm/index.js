@@ -24,22 +24,15 @@ class ModalForm extends React.Component {
         super(props)
         this.state = {
             isOpen: false,
-            name: '',
-            description:''
-
         };
         this.openModal = this.openModal.bind(this);
-        // this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
-        //Handle All Form Input
-        this.handleChangeName = this.handleChangeName.bind(this)
-        this.handleChangeDescription = this.handleChangeDescription.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleSubmit (e){
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-          if (!err) {
+            if (!err) {
             console.log('Received values of form: ', values);
             var url = 'http://localhost:9000/product';
             var data = {
@@ -76,9 +69,9 @@ class ModalForm extends React.Component {
                     alert("Failed To Save")
                 }
             });
-          }
+            }
         });
-      }
+        }
     openModal(){
         this.setState({
             isOpen: true
@@ -88,18 +81,9 @@ class ModalForm extends React.Component {
         this.setState({
             isOpen: false
         })
-    }
-    handleChangeName(event) {
-        this.setState({name: event.target.value});
-        console.log("state name : ", this.state.name)
-    }
-    handleChangeDescription(event) {
-        this.setState({description: event.target.value});
-        console.log("state description : ", this.state.name)
     }    
     
     render(){
-        console.log('MOODALLLLLL')
         const { getFieldDecorator } = this.props.form;
         return (
         <div>
@@ -168,17 +152,9 @@ class ModalForm extends React.Component {
                 )}
             </FormItem>
             <FormItem>
-            {/* {getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: true,
-            })(
-                <Checkbox>Remember me</Checkbox>
-            )} */}
-            {/* <a className="login-form-forgot" href="">Forgot password</a> */}
-            <Button type="primary" htmlType="submit" className="login-form-button">
-                Save
-            </Button>
-            {/* Or <a href="">register now!</a> */}
+                <Button type="primary" htmlType="submit" className="login-form-button">
+                    Save
+                </Button>
             </FormItem>
         </Form>
         </Modal>
